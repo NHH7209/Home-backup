@@ -1,0 +1,117 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#logo{
+    float: left;
+    padding-left: 60px;
+    padding-top: 40px;
+    background-color: orange;
+}
+
+
+#logmenu ul{
+    float: right;
+    font-size: 16px;
+    padding-right: 50px;
+    padding-top: 30px;
+    background-color: orange;
+}
+
+
+#logmenu li{
+    display: inline-block;
+    padding-left: 10px;
+    color: black;
+}
+
+#logname p{
+    font-size: 30px;
+    padding-left: 170px;
+    padding-top: 65px;
+    padding-bottom: 30px;
+    background-color: orange;
+}
+
+#mainmenu ul{
+    border-top: 3px solid gray;
+    border-bottom: 5px solid red;
+    width: auto;
+    height: 30px;
+    padding: 20px;
+    font-size: 20px;
+    background-color: black;
+}
+
+#mainmenu li{
+    display: inline-block;
+    color: white;
+    padding-left: 180px;
+    padding-right: 50px;
+}
+
+#moviechart p{
+    color: white;
+    background-color: rgb(20, 20, 20);
+    font-size: 30px;
+    padding-left: 80px;
+    padding-top: 40px;
+}
+
+#movie {
+    background-color: rgb(20, 20, 20);
+    padding-top: 50px;
+    padding-left: 20px;
+}
+
+#movie li{
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 30px;
+}
+
+#number{
+    background-color: rgb(20, 20, 20);
+    padding-left: 20px;
+    padding-bottom: 30px;
+}
+
+#number li{
+    font-size: 25px;
+    color: white;
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* 
+#button li {
+    display: inline-block;
+    
+} */
+
+#bottommenu{
+    background-color: rgb(20, 20, 20);
+    padding-top: 50px;
+    padding-left: 300px;
+    padding-bottom: 50px;
+}
+
+#bottommenu li{
+    font-size: 25px;
+    color: white;
+    display: inline-block;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#h_menu{
+    background-color: rgb(20, 20, 20);
+    padding-top: 50px;
+    padding-left: 450px;
+    padding-bottom: 250px;
+    color: white;
+}
+

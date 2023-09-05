@@ -1,0 +1,22 @@
+h2 {
+  color: black;
+}
+
+li {
+  /* ./ : 현재경로 */
+  /* ../ : 상위경로(부모경로) */
+  /* 이미지 가져오기 함수 : url(이미지 경로 */
+  /* 방법1 */
+  /* list-style-image: url("/04_chapter_css/img/a.gif"); */
+  /* 방법2 */
+  list-style-image: url("../img/a.gif");
+}
+
+span {
+  font-weight: bold;
+}
+
+p {
+  color: green;
+  text-decoration: underline;
+}

@@ -1,0 +1,12 @@
+/* 버튼 이미지를 수직으로 정렬하기 위한 스타일 */
+fieldset {
+    /* 중앙 정렬 */
+    margin: 0 auto;
+    /* 가로 크기 */
+    width: 30vw;
+}
+
+label, input {
+    /* 이미지 세로 중앙 정렬 */
+    vertical-align: middle;
+}

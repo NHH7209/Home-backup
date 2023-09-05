@@ -1,0 +1,61 @@
+table{
+    /* 테이블 선사이 간격 붙이기 속성 */
+    border-collapse: collapse;
+    /* 가로 크기 */
+    /* 화면단위 : px(고정크기), %(반응형단위), 
+    vm(가로), vh(세로) */
+    /* viewport : 모니터의 화면(pc 모니터에 맞추어 보임, 테이블에 맞추어 보임) */
+    /* 예) 코딩 시 100vm(가로) -> pc, 태블릿 등에서 적절하게 화면을 맞추어 줌 */
+    width: 610px;
+}
+/* 같은 선택자일 경우 (기본) : 디자인 적용 우선순위 -> 밑으로 갈수록 우선됨 */
+table, td, th{
+    /* 외곽선 */
+    /* border: 선두께 선스타일 선색상 */
+    border: 1px solid #cccccc;
+    /* color: #cccccc;  --> 밑에꺼 먼저 우선순위가 됨*/
+}
+
+tr{
+    /* 글자 정렬 : 중앙 */
+    text-align: center;
+}
+
+td, th{
+    /* 안쪽 여백 */
+    padding: 5px;
+}
+
+
+#table_title{
+    /* 테이블 제목 : 배경색, 세로크기 */
+    height: 30px;
+    background-color: #eeeeee;
+}
+
+.train{
+    /* 배경색 */
+    background-color: #fbdbf2;
+    /* 글자색 */
+    color: #f1477b;
+    /* 밑줄 */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* 참고 : 생략 해도 됨 */
+#col1, #col2, #col3, #col4, #col5, #col6, #col7{
+    width: 90px;
+}
+
+#col1, #col4{
+    width: 90px;
+}
+#col2, #col3{
+    width: 60px;
+}
+#col5 #col6{
+    width: 80px;
+}
+
+

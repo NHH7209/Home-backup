@@ -1,0 +1,15 @@
+ul{
+    background-color: #f5f7e4;
+    /* 외관선 */
+    /* border: 선두께 선스타일 선색상 */
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    width: 640px;
+    padding: 30px;
+}
+li{
+    /* 앞에 목록 점 없애기 */
+    list-style-type: none;
+    margin-left: 20px;
+    display: inline-block;
+}

@@ -1,0 +1,33 @@
+/* 문제 풀이 */
+/* css 디자인 여백 초기화 */
+/* 웹브라우저 (크롬, 익스플러러, 파이어폭스 등) */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+#banner {
+  background-color: #f6e9ed;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  width: 320px;
+  height: 180px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+p{
+    margin-top: 20px;
+}
+
+#button {
+  background-color: hotpink;
+  padding: 10px;
+  text-align: center;
+  width: 100px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: white;
+}

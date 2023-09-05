@@ -1,0 +1,135 @@
+/* 문제풀이 */
+/* 여백 초기화 */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* 목록 점 없애기 */
+li{
+    list-style-type: none;
+}
+
+/* 전체 페이지 */
+#page{
+    /* 가로 */
+    width: 995px;
+    /* 중앙 정렬 */
+    margin: 0 auto;
+    /* 임시 */
+    background-color:bisque;
+}
+
+/* 머리말 디자인 */
+header{
+    /* 가로 */
+    width: 995px;
+    /* 세로 */
+    height: 100px;
+    /* 외곽선 */
+    border-bottom: 1px solid #cccccc;
+    /* 임시 */
+    background-color: aqua;
+}
+
+/* 로고 디자인 : 왼쪽 배치 */
+#logo{
+    /* 왼쪽 배치 */
+    float: left;
+   /* 임시 */
+   background-color: red;
+}
+#top{
+    /* 오른쪽 배치 */
+    float: right;
+    /* 바깥여백 - 위쪽 */
+    margin-top: 30px;
+    /* 임시*/
+    background-color: orange;
+}
+
+/* 더미 div : float 영향 제거용 */
+.clear{
+    /* float 영향 제거 */
+    clear: both;
+}
+
+/* 대메뉴 크기 */
+nav{
+    /* 가로 */
+    width: 995px;
+    /* 세로 */
+    height: 70px;
+    /* 바깥여백 - 위쪽 */
+    margin-top: 10px;
+}
+
+
+/* 대매뉴(이미지들) 세로 -> 가로배치 */
+/* inline-block : 가로로 배치하되 크기가 모자라면 줄바꿈이 됨 */
+/* 세로 -> 가로배치 : display(inline-block), float:left */
+nav li{
+    /* 가로배치 */
+    display: inline-block;
+    /* float: left; */
+    /* float를 쓰게되면 float 영향 제거용으로 clear를 사용해줘야한다. */
+    /* 가로 */
+    width: 150px;
+}
+
+/* 본문 : 좌측 */
+section{
+    /*  왼쪽 배치 */
+    float: left;
+    /* 가로 */
+    width: 600px;
+    /* 임시 */
+    background-color: blueviolet;
+}
+
+/* 사이드바 : 우측 */
+aside{
+    /* 우측 배치 == 왼쪽 배치 */
+    float: right;
+    /* 가로 */
+    width: 370px;
+    /* 임시 */
+    background-color:yellowgreen;
+}
+
+/* 꼬리말 */
+footer{
+    /* 가로 */
+    width: 995px;
+    /* 세로 */
+    height: 100px;
+    /* 바깥 여백 - 위쪽 */
+    margin-top: 20px;
+    /* 외곽선 - 위쪽 */
+    border: 1px solid #cccccc;
+    /* 임시 */
+    background-color: brown;
+}
+
+/* 꼬리말 - 주소 */
+#address{
+    /* 왼쪽 배치 */
+    float: left;
+    /* 바깥여백 - 위 */
+    margin-top: 30px;
+    /* 바깥여백 - 왼쪽*/
+    margin-left: 50px;
+    /* 임시 */
+    background-color:aqua;
+}
+
+#customer{
+    /* 오른쪽 배치 */
+    float: right;
+    /* 바깥여백 - 위 */
+    margin-top: 20px;
+    /* 바깥여백 - 오른쪽 */
+    margin-right: 80px;
+    /* 임시 */
+    background-color: blueviolet;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- form(부모태그, 생략가능) > 입력양시(자식태그) -->
+    <form>
+        <!-- 1) -->
+        <label for="">이름</label>
+        <input type="text"/>
+        <br/>
+        <!-- 2) -->
+        <!-- 입력양식 : name, id, class width, height 공통속성(모든 태그에 있음) -->
+        <!-- for="변수명" == id="변수명" : label 태그와 input 태그가 연결 -->
+        <!-- 이름을 누르게 되면 text에 포커스가 되어 연결되었다는 것을 알 수 있다. -->
+        <label for="name">이름</label>
+        <input type="text" id="name"/>
+    </form>
+</body>
+</html>
