@@ -46,8 +46,20 @@ GRANT SELECT ON SAMPLETBL TO SCOTT;
 GRANT CREATE SYNONYM TO SCOTT;
 
 
+----------------------------------------------
+-- 동의어 실습
+----------------------------------------------
 
+-- SCOTT 계정으로 접속
+-- SAMPLETBL(SYSTEM 계정이 소유하고 있는 테이블)
+SELECT * FROM SYSTEM.SAMPLETBL;
+-- 위의 경우와 같이 다른 유저의 테이블 조회시 테이블명 길어짐
+-- 동의어(테이블명) 생성
+CREATE SYNONYM SAMPLETBL FOR SYSTEM.SAMPLETBL;
 
+SELECT * FROM SAMPLETBL; -- 동의어로 조회됨
+-- 동의어(시노님) 삭제하기 (DROP ~ )
+DROP SYNONYM SAMPLETBL;
 
 
 
