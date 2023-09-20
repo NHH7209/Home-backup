@@ -24,6 +24,12 @@ public class CarApplication {
         System.out.println("색깔 : " + car.color);
         System.out.println("최고속도 : " + car.maxSpeed);
         System.out.println("현재속도 : " + car.speed);
+
+//        Car 클래스 속성값 수정(현재속도 : car.speed) : 0 => 60
+        car.speed = 60;
+//        결과 출력
+        System.out.println("수정된 속도 : " + car.speed);
+
     }
 
 }
