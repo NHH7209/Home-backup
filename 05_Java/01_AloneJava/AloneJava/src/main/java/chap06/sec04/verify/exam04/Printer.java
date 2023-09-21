@@ -14,20 +14,20 @@ package chap06.sec04.verify.exam04;
  * 2023-09-20         GGG          최초 생성
  */
 public class Printer {
-    static void println(int num){
-        System.out.println(num);
+    static void println(int value){
+        System.out.println(value);
     }
 
-    static void println(boolean num){
-        System.out.println(num);
+    static void println(boolean value){
+        System.out.println(value);
     }
 
-    static void println(double num){
-        System.out.println(num);
+    static void println(double value){
+        System.out.println(value);
     }
 
-    static void println(String num){
-        System.out.println(num);
+    static void println(String value){
+        System.out.println(value);
     }
 
 }
