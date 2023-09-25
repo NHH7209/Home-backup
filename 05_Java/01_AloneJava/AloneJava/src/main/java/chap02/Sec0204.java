@@ -29,7 +29,7 @@ public class Sec0204 {
         Scanner scanner = new Scanner(System.in);
         String inputData; // 입력 문자열
         while (true) {
-            inputData = scanner.nextLine();
+                inputData = scanner.nextLine();
             System.out.println("입력된 문자열: " + inputData);
 //            TODO: 코드를 완성하세요 ( 입력된 문자열이 q가 들어오면 반복문 종료하게 코딩하세요 )
 //            TODO: 자바 : 문자열 비교
