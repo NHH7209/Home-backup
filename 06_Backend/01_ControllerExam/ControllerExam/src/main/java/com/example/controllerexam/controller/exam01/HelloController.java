@@ -39,7 +39,7 @@ public class HelloController {
         return "exam01/hello.jsp";
     }
 
-    //  TODO: 연습 1) url : /exam01/hello2 => "exam01/example01.jsp" 에 "안녕 hello2 페이지 " 출력하기
+    //  TODO: 연습 1) url : /exam01/hello2 => "exam01/example01.jsp.jsp" 에 "안녕 hello2 페이지 " 출력하기
 //                                                                 "Springboot 처음이지"
 //                                                                 "수고해!!!"
     @GetMapping("/exam01/hello2")
@@ -84,6 +84,35 @@ public String Hello3(Model model) {
         model.addAttribute("bVal", bVal);
 
         return "exam01/operation.jsp";
+    }
+
+//  TODO: 연습 3)
+//        url         : /exam01/hello4
+//        jsp 페이지명 :  exam01/example03.jsp
+//        결과        : boolean(bFlag), int(iParam),
+//                     long(lParam), double(dParam) 변수 4개를
+//                     만들어서 각각 자료형으로 전달해서 jsp 로 출력하세요
+
+    @GetMapping("/exam01/hello4")
+    public String Hello4(Model model) {
+
+        boolean bFlag = true;
+        int iParam    = 10;
+        long lParam   = 15L;
+        double dParam = 20.2;
+
+        model.addAttribute("bFlag", bFlag);
+        model.addAttribute("iParam", iParam);
+        model.addAttribute("lParam", lParam);
+        model.addAttribute("dParam", dParam);
+
+//      TODO: Debugging : 기본 : 변수의 값 추적
+        System.out.println("bFlag " + bFlag);
+        System.out.println("iParam " + iParam);
+        System.out.println("lParam " + lParam);
+        System.out.println("dParam " + dParam);
+
+        return "exam01/example03.jsp";
     }
 
 }

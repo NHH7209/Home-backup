@@ -35,11 +35,12 @@ public class HelloWorldController {
     }
 
     //  TODO: 연습) url : "/exam00/hello2
-//          => jsp : "/exam00/example01.jsp" : 화면에 Hello JSP & Spring boot 출력
+//          => jsp : "/exam00/example01.jsp.jsp" : 화면에 Hello JSP & Spring boot 출력
 //         함수를 만들어 주세요
     @GetMapping("/exam00/hello2")
     public String Hello2(Model model) {
         return "/exam00/example01.jsp";
     }
+
 
 }
