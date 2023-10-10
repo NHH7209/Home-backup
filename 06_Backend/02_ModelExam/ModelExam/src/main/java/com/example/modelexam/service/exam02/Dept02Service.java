@@ -1,4 +1,4 @@
-package com.example.modelexam.service.exam01;
+package com.example.modelexam.service.exam02;
 
 import com.example.modelexam.dao.DeptDao;
 import com.example.modelexam.model.Dept;
@@ -31,7 +31,7 @@ import java.util.List;
  * 2023-10-06         GGG          최초 생성
  */
 @Service
-public class DeptService {
+public class Dept02Service {
 
     @Autowired
     DeptDao deptDao; // 가짜 DB에 접근하는 객체
@@ -47,9 +47,14 @@ public class DeptService {
         return list;
     }
 
+    /**
+     * id(기본키)로 조회 : 상세조회(1건조회)
+     * @param dno
+     * @return
+     */
     public Dept findById(long dno) {
-//        TODO: db 상세조회(1건조회) 함수 호출
-//              id(기본키)로 조회
+//       todo: db 상세조회(1건조회) 함수 호출
+//          id(기본키)로 조회
         Dept dept = deptDao.selectById(dno);
 
         return dept;
