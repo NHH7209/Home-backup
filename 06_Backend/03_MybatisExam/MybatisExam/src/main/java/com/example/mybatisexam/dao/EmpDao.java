@@ -47,6 +47,19 @@ public interface EmpDao {
     /** eno 값 이 있는지 확인하는 함수 */
     long existById(int eno);
 
+    /** todo: dynamic sql 조회 */
+    public List<Emp> findByDynamicContaining(
+            @Param("ename") String ename,
+            @Param("job") String job,
+            @Param("manager") Integer manager,
+            PageReq pageReq);
+
+    /** todo: dynamic sql count 조회 */
+    public long countByDynamic(
+            @Param("ename") String ename,
+            @Param("job") String job,
+            @Param("manager") Integer manager);
+
 }
 
 
