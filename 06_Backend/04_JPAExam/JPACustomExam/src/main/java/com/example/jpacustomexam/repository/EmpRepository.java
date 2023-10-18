@@ -1,8 +1,13 @@
 package com.example.jpacustomexam.repository;
 
+import com.example.jpacustomexam.dto.EmpGroupDto;
 import com.example.jpacustomexam.model.Dept;
 import com.example.jpacustomexam.model.Emp;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -67,6 +72,7 @@ public interface EmpRepository extends JpaRepository<Emp, Integer> {
 //    where salary < 1000 or salary > 1500
 //    힌트 : < - LessThan , > - GreaterThan
     List<Emp> findAllBySalaryLessThanOrSalaryGreaterThan(int first, int last);
+
     //
 //    todo: 10) commission 이 300 이거나 500
 //         또는 1500 인 사원을 출력하는 함수를 작성하세요.
@@ -75,4 +81,102 @@ public interface EmpRepository extends JpaRepository<Emp, Integer> {
     List<Emp> findAllByCommissionOrCommissionOrCommission(int first,
                                                           int second,
                                                           int third);
+
+    //    ---------------------------------------
+//    @Query 예제 : 1) 오라클 쿼리 2) 객체 쿼리
+//    ---------------------------------------
+//  todo: 1) ename like 검색 (단, % 1개만 사용 )
+    @Query(value = "SELECT TD.* FROM TB_EMP TD WHERE TD.ENAME LIKE '%' || :ename || '%' "
+            , nativeQuery = true)
+    List<Emp> selectByEname(@Param("ename") String ename);
+
+    //  todo: 2) salary 내림차순, ename 오름차순으로 정렬
+//    nativeQuery = true 사용
+    @Query(value = "SELECT D.* FROM TB_EMP D " +
+            "ORDER BY D.SALARY DESC, D.ENAME ASC "
+            , nativeQuery = true)
+    List<Emp> selectDesc();
+
+    //  todo: 3) commission 이 null 이고
+//         salary 매개변수로 전달되는 값보다 같거나 큰 사원 정보를 모두 출력하세요.
+//    nativeQuery = true 사용
+    @Query(value = "SELECT * FROM TB_EMP " +
+            "WHERE COMMISSION IS NULL " +
+            "AND SALARY >= :salary "
+            , nativeQuery = true)
+    List<Emp> selectSalary(@Param("salary") int salary);
+
+    //  todo: 4) 1982년도에 입사한 사원 출력하기, 입사일 내림차순하세요
+//    nativeQuery = true 사용
+    @Query(value = "SELECT * FROM TB_EMP " +
+            "WHERE HIREDATE BETWEEN :first AND :last "
+            , nativeQuery = true)
+    List<Emp> selectHiredate(@Param("first") String first,
+                             @Param("last") String last);
+
+    //    todo: 5) dno, job 별 월급여의 합을 출력하는 함수를 작성하세요.(tb_emp)
+//      nativeQuery = true 사용,
+//      dto : EmpGroupDto
+    @Query(value = "SELECT dno, job, SUM(SALARY) AS salary " +
+            "FROM TB_EMP " +
+            "GROUP BY DNO, JOB "
+            , nativeQuery = true)
+    List<EmpGroupDto> selectGroupDnoJob();
+
+    //    todo: 6) dno 별 월급여의 평균을 출력하는 함수를 작성하세요.
+//       단, 소수점 절삭(버림, trunc) 하세요
+//       nativeQuery = true 사용,
+//       dto : EmpGroupDto
+    @Query(value = "SELECT DNO, TRUNC(AVG(SALARY)) AS avgSalary " +
+            "FROM TB_EMP " +
+            "GROUP BY DNO "
+            , nativeQuery = true)
+    List<EmpGroupDto> selectGroupDnoTrunc();
+
+    //    todo: 7) 사원의 수와(COUNT) 최고월급(SALARY)을(MAX) 출력하세요.
+//       nativeQuery = true 사용,
+//       dto : EmpGroupDto
+    @Query(value = "SELECT COUNT(ENO) AS countEno, " +
+            "MAX(SALARY) AS sumSalary " +
+            "FROM TB_EMP "
+            , nativeQuery = true)
+    List<EmpGroupDto> selectGroupSumMax();
+
+    //    todo: 8) 사원 테이블에서 가장 오래된 입사일(HIREDATE)과(MAX)
+//            가장 빠른 입사일을(MIN) 출력하세요.
+//       nativeQuery = true 사용,
+//       dto : EmpGroupDto
+    @Query(value = "SELECT MAX(HIREDATE) AS maxHiredate, " +
+            "       MIN(HIREDATE) AS minHiredate " +
+            "FROM TB_EMP "
+            , nativeQuery = true)
+    List<EmpGroupDto> selectGroupHiredate();
+
+    //  ---------------------------------------
+//  연습1) 페이징 연습 :
+//    -------------------------------------
+//    1) ename like 검색 함수를 만드세요 : 쿼리메소드
+//     단, 페이징처리를 하세요
+    Page<Emp> findAllByEnameContaining(String ename, Pageable pageable);
+
+//    2) findAll() : 페이징 기능을 추가하세요 : 기본함수
+
+    //    ----------------------
+//    @Query 페이징
+//   연습2) ename like 검색 함수를 만드세요 : @Query
+    @Query(value = "SELECT E.* FROM TB_EMP E " +
+            "WHERE E.ENAME LIKE '%' || :ename || '%' "
+            , countQuery = "SELECT count(*) FROM TB_EMP E " +
+            "WHERE E.ENAME LIKE '%' || :ename || '%' "
+            , nativeQuery = true)
+    Page<Emp> selectEnamePage(@Param("ename") String ename, Pageable pageable);
 }
+
+
+
+
+
+
+
+
+
