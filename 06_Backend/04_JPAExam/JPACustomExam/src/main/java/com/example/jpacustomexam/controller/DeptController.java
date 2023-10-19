@@ -60,7 +60,7 @@ public class DeptController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     /** 전체 조회 + 정렬(dname 내림차순) : 쿼리메소드  */
     @GetMapping("/dept/dname/desc")
     public ResponseEntity<Object> findAllByOrderByDnameDesc() {
@@ -114,7 +114,7 @@ public class DeptController {
 //         전체 조회 + 정렬(dno 오름차순) 호출
             List<Dept> list
                     = deptService
-                    .findAllByDnameContainingOrderByDnameDesc(dname);
+                        .findAllByDnameContainingOrderByDnameDesc(dname);
 
             if (list.isEmpty() == false) {
 //                성공
@@ -251,8 +251,8 @@ public class DeptController {
     /** 1)  : @Query */
     @GetMapping("/dept/dname/{dname}/paging")
     public ResponseEntity<Object> getDeptDnamePage(
-            @PathVariable String dname,
-            Pageable pageable
+        @PathVariable String dname,
+        Pageable pageable
     ) {
         try {
             Page<Dept> page

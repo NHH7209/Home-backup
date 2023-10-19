@@ -20,14 +20,14 @@ public interface EmpGroupDto {
     String getJob();
     Integer getSalary();
 
-    //    연습 6) DNO, avgSalary(Integer)
+//    연습 6) DNO, avgSalary(Integer)
     Integer getAvgSalary();
 
-    //    연습 7) countEno(Integer), sumSalary(Integer)
+//    연습 7) countEno(Integer), sumSalary(Integer)
     Integer getCountEno();
     Integer getSumSalary();
 
-    //    연습 8) maxHiredate(String), minHiredate(String)
+//    연습 8) maxHiredate(String), minHiredate(String)
     String getMaxHiredate();
     String getMinHiredate();
 

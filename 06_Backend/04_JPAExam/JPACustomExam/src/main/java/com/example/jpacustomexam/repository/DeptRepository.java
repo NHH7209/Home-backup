@@ -104,7 +104,7 @@ public interface DeptRepository extends JpaRepository<Dept, Integer> {
             nativeQuery = true)
     List<DeptGroupDto> selectByBasicFunc();
 
-    //    todo: 6) case when 사용 쿼리
+//    todo: 6) case when 사용 쿼리
 //     dno < 20 연말 보너스 100%
 //     dno > 20   연말 보너스 200%
 //     모두 아니면 연말 보너스 없음 이라고 출력하세요
@@ -117,7 +117,7 @@ public interface DeptRepository extends JpaRepository<Dept, Integer> {
             nativeQuery = true)
     List<DeptGroupDto> selectByCase();
 
-    //    ----------------------------------------------
+//    ----------------------------------------------
 //    JPA 페이징 처리 : 요청 페이징 객체 - Pageable (매개변수)
 //                    결과 페이징 객체 - Page      (리턴값)
 //    -----------------------------------------------
@@ -127,7 +127,7 @@ public interface DeptRepository extends JpaRepository<Dept, Integer> {
 
 //    1-2) 쿼리 메소드 : findAll() (jpa 기본함수)
 
-    //    2) @Query : 페이징 처리 (오라클 쿼리 : countQuery 속성 추가)
+//    2) @Query : 페이징 처리 (오라클 쿼리 : countQuery 속성 추가)
     @Query(value = "SELECT D.* FROM TB_DEPT D " +
             "WHERE D.DNAME LIKE '%' || :dname || '%'",
             countQuery = "SELECT COUNT(*) FROM TB_DEPT D " +
@@ -136,7 +136,7 @@ public interface DeptRepository extends JpaRepository<Dept, Integer> {
     Page<Dept> selectByDnamePage(@Param("dname") String dname,
                                  Pageable pageable);
 
-    //    3) @Query 페이징 + 조인(부서 + 사원) : DeptEmpDto
+//    3) @Query 페이징 + 조인(부서 + 사원) : DeptEmpDto
     @Query(value = "SELECT D.*, E.ENO, E.ENAME, E.SALARY " +
             "FROM TB_DEPT D, TB_EMP E " +
             "WHERE D.DNO = E.DNO ",
@@ -146,6 +146,7 @@ public interface DeptRepository extends JpaRepository<Dept, Integer> {
             nativeQuery = true)
     Page<DeptEmpDto> selectNativeJoinPage(Pageable pageable);
 }
+
 
 
 

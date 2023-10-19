@@ -130,7 +130,7 @@ public class DeptService {
         return page;
     }
 
-    //    2) 기본 제공되는 전체 조회 함수 : 페이징처리 기능 추가
+//    2) 기본 제공되는 전체 조회 함수 : 페이징처리 기능 추가
     public Page<Dept> findAllPage(Pageable pageable) {
         Page<Dept> page
                 = deptRepository.findAll(pageable);
@@ -138,7 +138,7 @@ public class DeptService {
         return page;
     }
 
-    //    --------------------------
+//    --------------------------
 //    @Query : 페이징 처리
 //    --------------------------
     //    2)  : 페이징처리 기능 추가
@@ -158,6 +158,7 @@ public class DeptService {
 
 
 }
+
 
 
 

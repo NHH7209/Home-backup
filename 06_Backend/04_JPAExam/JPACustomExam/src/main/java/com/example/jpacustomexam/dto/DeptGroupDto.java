@@ -14,7 +14,7 @@ package com.example.jpacustomexam.dto;
  * 2023-10-18         GGG          최초 생성
  */
 public interface DeptGroupDto {
-    //    속성 => 상수 x
+//    속성 => 상수 x
 //    getter 함수
 //    sumVar, avgVar, maxVar, minVar
     Integer getSumVar();
@@ -22,14 +22,14 @@ public interface DeptGroupDto {
     Integer getMaxVar();
     Integer getMinVar();
 
-    //    예제 5) upperDname(String), lowerDname(String),
+//    예제 5) upperDname(String), lowerDname(String),
 //           trimOracle(String), charSysdate(String)
     String getUpperDname();
     String getLowerDname();
     String getTrimOracle();
     String getCharSysdate();
 
-    //    예제 6) dno(Integer), incentive(String)
+//    예제 6) dno(Integer), incentive(String)
     Integer getDno();
     String getIncentive();
 

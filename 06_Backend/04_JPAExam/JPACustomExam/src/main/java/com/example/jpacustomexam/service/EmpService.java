@@ -219,7 +219,7 @@ public class EmpService {
         return page;
     }
 
-    //    --------------
+//    --------------
 //    @Query 연습
 //    --------------
     //    2)  : 페이징
@@ -230,6 +230,7 @@ public class EmpService {
     }
 
 }
+
 
 
 

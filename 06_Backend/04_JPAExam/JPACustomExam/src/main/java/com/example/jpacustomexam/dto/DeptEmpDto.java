@@ -14,17 +14,16 @@ package com.example.jpacustomexam.dto;
  * 2023-10-18         GGG          최초 생성
  */
 public interface DeptEmpDto {
-    //    부서번호
+//    부서번호
     Integer getDno();
-
-    //    부서명
+//    부서명
     String getDname();
-    //    부서위치
+//    부서위치
     String getLoc();
-    //    사원번호
+//    사원번호
     Integer getEno();
-    //    사원명
+//    사원명
     String getEname();
-    //    월급
+//    월급
     Integer getSalary();
 }
