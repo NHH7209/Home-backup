@@ -2,7 +2,7 @@
 # 1) 메뉴 라이브러리 설치
 npm i react-router-dom
 
-# 2) 벡엔드 연동 라이브러리 설치
+# 2) 벡엔드 연동 라이브러리 설치 : ajax (업그레이드)
 npm i axios
 
 # 3) pre css 컴파일러 : node-sass -> 더이상 안씀 : sass 설치할것

@@ -10,6 +10,21 @@ import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import NotFound from "./pages/common/NotFound";
 import DeptList from "./pages/basic/dept/DeptList";
+import EmpList from "./pages/basic/emp/EmpList";
+import AddDept from './pages/basic/dept/AddDept';
+import AddEmp from "./pages/basic/emp/AddEmp";
+import Dept from "./pages/basic/dept/Dept";
+import Emp from "./pages/basic/emp/Emp";
+import QnaList from "./pages/basic/qna/QnaList";
+import CustomerList from "./pages/basic/customer/CustomerList";
+import AddQna from "./pages/basic/qna/AddQna";
+import AddCustomer from "./pages/basic/customer/AddCustomer";
+import Qna from "./pages/basic/qna/Qna";
+import Customer from "./pages/basic/customer/Customer";
+import FaqList from "./pages/normal/faq/FaqList";
+import CinemaFaqList from "./pages/normal/cinema/CinemaFaqList";
+import AddFaq from "./pages/normal/faq/AddFaq";
+import AddCinemaFaq from './pages/normal/cinema/AddCinemaFaq';
 
 function App() {
   return (
@@ -33,6 +48,31 @@ function App() {
 
           {/* dept */}
           <Route path="/dept" element={<DeptList />} />
+          <Route path="/add-dept" element={<AddDept />} />
+          <Route path="/dept/:dno" element={<Dept />} />
+
+          {/* emp(연습) */}
+          <Route path="/emp" element={<EmpList />} />
+          <Route path="/add-emp" element={<AddEmp />} />
+          <Route path="/emp/:eno" element={<Emp />} />
+
+          {/* qna */}
+          <Route path="/qna" element={<QnaList />} />
+          <Route path="/add-qna" element={<AddQna />} />
+          <Route path="/qna/:qno" element={<Qna />} />
+
+          {/* customer */}
+          <Route path="/customer" element={<CustomerList />} />
+          <Route path="/add-customer" element={<AddCustomer />} />
+          <Route path="/customer/:cid" element={<Customer />} />
+
+          {/* faq */}
+          <Route path="/faq" element={<FaqList />} />
+          <Route path="/add-faq" element={<AddFaq />} />
+
+          {/* cinema faq */}
+          <Route path="/cinema-faq" element={<CinemaFaqList />} />
+          <Route path="/add-cinema-faq" element={<AddCinemaFaq />} />
 
           {/* NotFound */}
           <Route path="*" element={<NotFound />} />

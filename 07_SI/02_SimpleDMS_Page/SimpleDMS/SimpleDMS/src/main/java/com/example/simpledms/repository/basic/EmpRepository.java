@@ -21,7 +21,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface EmpRepository extends JpaRepository<Emp, Integer> {
-    //    ename like : 쿼리메소드 + 페이징(리턴 : Page, 매개변수 : Pageable )
+//    ename like : 쿼리메소드 + 페이징(리턴 : Page, 매개변수 : Pageable )
     Page<Emp> findAllByEnameContaining(String ename, Pageable pageable);
-
 }

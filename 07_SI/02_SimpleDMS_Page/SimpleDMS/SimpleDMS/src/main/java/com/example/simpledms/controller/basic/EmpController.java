@@ -1,6 +1,6 @@
 package com.example.simpledms.controller.basic;
 
-import com.example.simpledms.model.entity.basic.Emp;
+import com.example.simpledms.model.entity.basic.Dept;
 import com.example.simpledms.model.entity.basic.Emp;
 import com.example.simpledms.service.basic.EmpService;
 import lombok.extern.slf4j.Slf4j;
@@ -37,14 +37,13 @@ public class EmpController {
     @Autowired
     EmpService empService; // DI
 
-
     //    전체 조회 + ename like 검색
     @GetMapping("/emp")
     public ResponseEntity<Object> findAllByEnameContaining(
             @RequestParam(defaultValue = "") String ename,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size
-    ){
+    ) {
         try {
 //            페이지 변수 저장 (page:현재페이지번호, size:1페이지당개수)
             Pageable pageable = PageRequest.of(page, size);
@@ -53,7 +52,7 @@ public class EmpController {
                     = empService.findAllByEnameContaining(ename, pageable);
 
 //          리액트 전송 : 사원배열 , 페이징정보 [자료구조 : Map<키이름, 값>]
-            Map<String , Object> response = new HashMap<>();
+            Map<String, Object> response = new HashMap<>();
             response.put("emp", empPage.getContent()); // 사원배열
             response.put("currentPage", empPage.getNumber()); // 현재페이지번호
             response.put("totalItems", empPage.getTotalElements()); // 총건수(개수)
@@ -66,11 +65,12 @@ public class EmpController {
 //                데이터 없음
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.debug(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     //    저장 함수
     @PostMapping("/emp")
     public ResponseEntity<Object> create(@RequestBody Emp emp) {
@@ -86,7 +86,7 @@ public class EmpController {
     }
 
 
-    //  수정함수
+    //    수정 함수
     @PutMapping("/emp/{eno}")
     public ResponseEntity<Object> update(
             @PathVariable int eno,
@@ -102,7 +102,7 @@ public class EmpController {
         }
     }
 
-    //  상세조회
+    // 상세조회
     @GetMapping("/emp/{eno}")
     public ResponseEntity<Object> findById(@PathVariable int eno) {
 
@@ -129,6 +129,7 @@ public class EmpController {
 
 //        프론트엔드 쪽으로 상태정보를 보내줌
         try {
+//            삭제함수 호출
             boolean bSuccess = empService.removeById(eno);
 
             if (bSuccess == true) {
@@ -142,4 +143,5 @@ public class EmpController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }

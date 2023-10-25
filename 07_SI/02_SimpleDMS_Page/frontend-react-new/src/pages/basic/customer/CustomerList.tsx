@@ -1,17 +1,17 @@
-// QnaList.tsx : rfce
-import { Pagination } from "@mui/material";
+// CustomerList.tsx : rfce
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import TitleCom from "../../../components/common/TitleCom";
-import IQna from "../../../types/basic/IQna";
-import QnaService from "../../../services/basic/QnaService";
+import { Link } from "react-router-dom";
+import ICustomer from "../../../types/basic/ICustomer";
+import CustomerService from "../../../services/basic/CustomerService";
+import { Pagination } from "@mui/material";
 
-function QnaList() {
+function CustomerList() {
   // 변수 정의
-  // qna 배열 변수
-  const [qna, setQna] = useState<Array<IQna>>([]);
+  // customer 배열 변수
+  const [customer, setCustomer] = useState<Array<ICustomer>>([]);
   // select 태그에 선택된 값을 저장할 변수 : 기본 (question)
-  const [searchSelect, setSearchSelect] = useState<string>("question");
+  const [searchSelect, setSearchSelect] = useState<string>("fullName");
   // 검색어(input) 변수
   const [searchKeyword, setSearchKeyword] = useState<string>("");
 
@@ -22,19 +22,18 @@ function QnaList() {
   const [pageSize, setPageSize] = useState<number>(3); // 1페이지당개수
   const pageSizes = [3, 6, 9]; // 공통 pageSizes : 배열 (셀렉트 박스 사용)
 
-  // 함수 정의
-  //   화면이 뜰때 실행되는 이벤트 + 감시변수
+  // todo: 함수 정의
   useEffect(() => {
-    retrieveQna(); // 전체조회 실행
+    retrieveCustomer(); // 전체조회 실행
   }, [page, pageSize]);
 
   // 전체조회
-  const retrieveQna = () => {
+  const retrieveCustomer = () => {
     // 벡엔드 매개변수 전송 : + 현재페이지(page), 1페이지당개수(pageSize)
-    QnaService.getAll(searchSelect, searchKeyword, page - 1, pageSize) // 벡엔드 전체조회요청
+    CustomerService.getAll(searchSelect, searchKeyword, page - 1, pageSize) // 벡엔드 전체조회요청
       .then((response: any) => {
-        const { qna, totalPages } = response.data;
-        setQna(qna);
+        const { customer, totalPages } = response.data;
+        setCustomer(customer);
         setCount(totalPages);
         // 로그 출력
         console.log("response", response.data);
@@ -73,25 +72,25 @@ function QnaList() {
     // 여기
     <>
       {/* 제목 start */}
-      <TitleCom title="Qna List" />
+      <TitleCom title="Cusomter List" />
       {/* 제목 end */}
 
-      {/* question start(다양한 검색어 부분) */}
+      {/* fullName start(다양한 검색어 부분) */}
       <div className="row mb-5 justify-content-center">
         <div className="col-md-8">
           <div className="input-group mb-3">
-            {/* 다양한 검색(select : question,questioner) 시작 */}
+            {/* 다양한 검색(select : fullName,email) 시작 */}
             <div className="col-2">
               <select
                 className="form-select"
                 onChange={onChangeSearchSelect}
                 value={searchSelect}
               >
-                <option key="question" value="question">
-                  question
+                <option key="fullName" value="fullName">
+                  fullName
                 </option>
-                <option key="questioner" value="questioner">
-                  questioner
+                <option key="email" value="email">
+                  email
                 </option>
               </select>
             </div>
@@ -102,7 +101,7 @@ function QnaList() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search by Question"
+                placeholder="Search by Keyword"
                 value={searchKeyword}
                 onChange={onChangeSearchKeyword}
               />
@@ -114,7 +113,7 @@ function QnaList() {
               <button
                 className="btn btn-outline-secondary"
                 type="button"
-                onClick={retrieveQna}
+                onClick={retrieveCustomer}
               >
                 Search
               </button>
@@ -123,7 +122,7 @@ function QnaList() {
           </div>
         </div>
       </div>
-      {/* question end */}
+      {/* fullName end */}
 
       <div className="col-md-12">
         {/* page control start(페이징 html) */}
@@ -154,24 +153,22 @@ function QnaList() {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Question</th>
-              <th scope="col">Questioner</th>
-              <th scope="col">Answer</th>
-              <th scope="col">Answerer</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {qna &&
-              qna.map((data) => (
+            {customer &&
+              customer.map((data) => (
                 // 키값 추가 않하면 react 에서 경고를 추가 : 키는 내부적으로 리액트가 rerending 할때 체크하는 값임
-                <tr key={data.question}>
-                  <td>{data.question}</td>
-                  <td>{data.questioner}</td>
-                  <td>{data.answer}</td>
-                  <td>{data.answerer}</td>
+                <tr key={data.cid}>
+                  <td>{data.fullName}</td>
+                  <td>{data.email}</td>
+                  <td>{data.phone}</td>
                   <td>
-                    <Link to={"/qna/" + data.qno}>
+                    <Link to={"/customer/" + data.cid}>
                       <span className="badge bg-success">Edit</span>
                     </Link>
                   </td>
@@ -185,4 +182,4 @@ function QnaList() {
   );
 }
 
-export default QnaList;
+export default CustomerList;
