@@ -136,6 +136,7 @@ function AddCinemaFaq() {
             {/* sortOrder 입력창 끝 */}
 
             <div className="row g-3 mt-3 mb-3">
+              
               <button
                 onClick={saveCinemaFaq}
                 className="btn btn-outline-primary ms-2 col"
