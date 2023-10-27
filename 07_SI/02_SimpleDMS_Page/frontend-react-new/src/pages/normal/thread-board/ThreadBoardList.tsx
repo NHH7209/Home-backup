@@ -1,10 +1,12 @@
 // ThreadBoardList.tsx : rfce
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TitleCom from "../../../components/common/TitleCom";
-import { Link } from "react-router-dom";
-import IThreadBoard from "../../../types/normal/IThreadBoard";
-import ThreadBoardService from "../../../services/normal/ThreadBoardService";
 import { Pagination } from "@mui/material";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import IThreadBoard from "../../../types/normal/IThreadBoard";
+import { useEffect } from "react";
+import ThreadBoardService from "../../../services/normal/ThreadBoardService";
 
 function ThreadBoardList() {
   // todo: 변수 정의
@@ -12,7 +14,7 @@ function ThreadBoardList() {
   //   답변글 1개만 달리게 제한
   const [threadBoard, setThreadBoard] = useState<Array<IThreadBoard>>([]);
   // 검색어 변수
-  const [searchBoardTitle, setSearchBoardTitle] = useState<string>("");
+  const [searchSubject, setSearchSubject] = useState<string>("");
 
   // todo: 공통 변수 : page(현재페이지번호), count(총페이지건수), pageSize(3,6,9 배열)
   const [page, setPage] = useState<number>(1);
@@ -28,7 +30,7 @@ function ThreadBoardList() {
 
   //   전체조회 함수
   const retrieveThreadBoard = () => {
-    ThreadBoardService.getAll(searchBoardTitle, page - 1, pageSize) // 벡엔드 전체조회요청
+    ThreadBoardService.getAll(searchSubject, page - 1, pageSize) // 벡엔드 전체조회요청
       .then((response: any) => {
         const { threadBoard, totalPages } = response.data;
         setThreadBoard(threadBoard);
@@ -42,8 +44,8 @@ function ThreadBoardList() {
   };
 
   //  검색어 수동 바인딩 함수
-  const onChangeSearchBoardTitle = (e: any) => {
-    setSearchBoardTitle(e.target.value);
+  const onChangeSearchSubject = (e: any) => {
+    setSearchSubject(e.target.value);
   };
 
   // todo: handlePageSizeChange(공통) : pageSize 값 변경시 실행되는 함수
@@ -60,21 +62,21 @@ function ThreadBoardList() {
     setPage(value);
   };
 
-  // ---------------------------------------
-  // todo: 답변 변수 정의
+  // -----------------------------------------------
+  //   todo: 답변글 생성(insert) 부분
   // thread 객체 초기화
   const initialThread = {
     tid: null,
-    subject: "",
-    mainText: "",
+    subject: "",      // 제목
+    mainText: "",     // 본문
     writer: "",
-    views: 0,
-    tgroup: null,
-    tparent: null
+    views: 0,        // 조회수
+    tgroup: null,   // 그룹번호
+    tparent: 0      // 부모속성
   };
   // 답변 글 입력 객체
   const [thread, setThread] = useState(initialThread);
-  // thread 버튼 클릭시 상태 저장할 변수 : true/false
+  // reply 버튼 클릭시 상태 저장할 변수 : true/false
   const [threadClicked, setThreadClicked] = useState(false);
 
   // todo: 답변 함수 정의
@@ -88,18 +90,12 @@ function ThreadBoardList() {
   const saveThread = () => {
     // 임시 객체
     let data = {
-      subject: thread.subject,
-      mainText: thread.mainText,
-      writer: thread.writer,
-      views: 0,
-      // 그룹번호(부모글 == 자식글)
-      // rule : 1) 부모글 최초생성 또는 답변글 없을때 0 저장
-      //        2) 답변글 생성이면 부모글 게시판번호(tid) 저장
-      tgroup: thread.tid,
-      // 부모글번호 :
-      // rule : 1) 부모글 최초생성 또는 답변글 없을때 자신의 게시판번호(tid) 저장
-      //        2) 답변글 생성이면 부모글번호(tid)
-      tparent: thread.tid,
+        subject: thread.subject,      // 제목
+        mainText: thread.mainText,    // 본문
+        writer: thread.writer,
+        views: 0,                     // 조회수
+        tgroup: thread.tid,   // 그룹번호(부모번호(bid) == 자식번호(bid))
+        tparent: thread.tid   // 부모번호(tid)        
     };
 
     ThreadBoardService.create(data) // 벡엔드 답변글 저장 요청
@@ -114,17 +110,17 @@ function ThreadBoardList() {
       });
   };
 
-  //  게시물 thread 버튼 클릭시 화면에 답변입력창 보이게 하는 함수
+  //  게시물 reply 버튼 클릭시 화면에 답변입력창 보이게 하는 함수
   const newThread = (data: any) => {
-    // 매개변수 데이터(객체) 수정 : mainText: "" 수정
+    // 매개변수 데이터(객체) 수정 : mainText(내용): "" 수정
     setThread({ ...data, mainText: "" });
-    // 답변 입력창 화면보이기 : threadClicked = true
+    // 답변 입력창 화면보이기 : setThreadClicked = true
     setThreadClicked(true);
   };
 
   //  답변 입력창 숨기기
   const closeThread = () => {
-    // 답변 입력창 화면숨기기 : threadClicked = false
+    // 답변 입력창 화면숨기기 : replyClicked = false
     setThreadClicked(false);
   };
 
@@ -141,9 +137,9 @@ function ThreadBoardList() {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by title"
-            value={searchBoardTitle}
-            onChange={onChangeSearchBoardTitle}
+            placeholder="Search by Subject"
+            value={searchSubject}
+            onChange={onChangeSearchSubject}
           />
           <button
             className="btn btn-outline-secondary"
@@ -187,11 +183,11 @@ function ThreadBoardList() {
           <thead>
             <tr>
               <th scope="col">board No</th>
-              <th scope="col">board Title</th>
-              <th scope="col">board Content</th>
+              <th scope="col">board Subject</th>
+              <th scope="col">board Main Text</th>
               <th scope="col">board Writer</th>
-              <th scope="col">views Cnt</th>
-              <th scope="col">thread</th>
+              <th scope="col">view Cnt</th>
+              <th scope="col">reply</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -239,7 +235,7 @@ function ThreadBoardList() {
         </table>
         {/* table end */}
 
-        {/* thread form start(답변글) */}
+        {/* reply form start(답변글) */}
         <div>
           {/* 변수명 && 태그 : 변수명 = true 태그가 보이고 */}
           {/* 변수명 && 태그 : 변수명 = false 태그가 안보임 */}
@@ -263,7 +259,7 @@ function ThreadBoardList() {
 
               <div className="col-md-12 row mt-2">
                 <label htmlFor="subject" className="col-md-2 col-form-label">
-                  board Title
+                  Subject
                 </label>
                 <div className="col-md-10">
                   <input
@@ -278,11 +274,8 @@ function ThreadBoardList() {
               </div>
 
               <div className="col-md-12 row mt-2">
-                <label
-                  htmlFor="mainText"
-                  className="col-md-2 col-form-label"
-                >
-                  board Content
+                <label htmlFor="mainText" className="col-md-2 col-form-label">
+                  main Text
                 </label>
                 <div className="col-md-10">
                   <input
@@ -298,11 +291,8 @@ function ThreadBoardList() {
               </div>
 
               <div className="col-md-12 row mt-2">
-                <label
-                  htmlFor="writer"
-                  className="col-md-2 col-form-label"
-                >
-                  board Writer
+                <label htmlFor="writer" className="col-md-2 col-form-label">
+                  writer
                 </label>
                 <div className="col-md-10">
                   <input
@@ -336,7 +326,7 @@ function ThreadBoardList() {
             </div>
           )}
         </div>
-        {/* thread form end */}
+        {/* reply form end */}
       </div>
     </div>
   );

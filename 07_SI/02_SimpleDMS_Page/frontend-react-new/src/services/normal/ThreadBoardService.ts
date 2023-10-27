@@ -1,16 +1,16 @@
-// ReplyBoardService.ts : axios 공통 crud 함수
+// ThreadBoardService.ts : axios 공통함수
 
+import IThreadBoard from "../../types/normal/IThreadBoard";
 import http from "../../utils/http-common";
-import IThreadBoard from '../../types/normal/IThreadBoard';
 
 // 전체 조회 + like 검색(paging 기능 : page(현재페이지), size(1페이지당개수))
-const getAll = (boardTitle:string, page:number, size:number) => {
-    return http.get<Array<IThreadBoard>>(`/normal/thread-board?boardTitle=${boardTitle}&page=${page}&size=${size}`);
+const getAll = (subject:string, page:number, size:number) => {
+    return http.get<Array<IThreadBoard>>(`/normal/thread-board?subject=${subject}&page=${page}&size=${size}`);
   };
   
   // 상세 조회
-  const get = (bid:any) => {
-    return http.get<IThreadBoard>(`/normal/thread-board/${bid}`);
+  const get = (tid:any) => {
+    return http.get<IThreadBoard>(`/normal/thread-board/${tid}`);
   };
   
   // 저장함수 : 게시물 생성(부모글)
@@ -24,22 +24,22 @@ const getAll = (boardTitle:string, page:number, size:number) => {
   };
 
   // 수정함수
-  const update = (bid:any, data:IThreadBoard) => {
-    return http.put<any>(`/normal/thread-board/${bid}`, data);
+  const update = (tid:any, data:IThreadBoard) => {
+    return http.put<any>(`/normal/thread-board/${tid}`, data);
   };
 
   // 삭제함수 : 게시물(부모글) + 답변글(자식글) 모두 삭제
 //      그룹번호 : 부모글과 자식글은 모두 그룹번호가 같음
-  const removeBoard = (boardGroup:any) => {
-    return http.delete<any>(`/normal/thread-board/deletion/${boardGroup}`);
+  const removeBoard = (tgroup:any) => {
+    return http.delete<any>(`/normal/thread-board/deletion/${tgroup}`);
   };
 
   // 삭제함수 : 답변글만 삭제
-  const remove = (bid:any) => {
-    return http.delete<any>(`/normal/thread/deletion/${bid}`);
+  const remove = (tid:any) => {
+    return http.delete<any>(`/normal/thread/deletion/${tid}`);
   };
   
-  const ReplyBoardService = {
+  const ThreadBoardService = {
     getAll,
     get,
     createBoard,
@@ -49,5 +49,5 @@ const getAll = (boardTitle:string, page:number, size:number) => {
     remove,
   };
   
-  export default ReplyBoardService;
+  export default ThreadBoardService;
   
