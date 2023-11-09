@@ -32,7 +32,19 @@ import ThreadBoardList from "./pages/normal/thread-board/ThreadBoardList";
 import AddReplyBoard from "./pages/normal/reply-board/AddReplyBoard";
 import AddThreadBoard from "./pages/normal/thread-board/AddThreadBoard";
 import ReplyBoard from "./pages/normal/reply-board/ReplyBoard";
-import ThreadBoard from "./pages/normal/thread-board/ThreadBoard";
+import CodeCategoryList from "./pages/admin/CodeCategoryList";
+import AddCodeCategory from './pages/admin/AddCodeCategory';
+import CodeList from "./pages/admin/CodeList";
+import AddCode from "./pages/admin/AddCode";
+import Code from "./pages/admin/Code";
+import SimpleProductList from './pages/shop/simple-product/SimpleProductList';
+import ProductList from "./pages/shop/product/ProductList";
+import AddSimpleProduct from './pages/shop/simple-product/AddSimpleProduct';
+import AddProduct from './pages/shop/product/AddProduct';
+import SimpleProduct from "./pages/shop/simple-product/SimpleProduct";
+import Product from "./pages/shop/product/Product";
+import SimpleCart from "./pages/shop/simple-product/SimpleCart";
+import SimpleCartList from "./pages/shop/simple-product/SimpleCartList";
 
 function App() {
   return (
@@ -95,8 +107,29 @@ function App() {
           {/* thread-board */}
           <Route path="/thread-board" element={<ThreadBoardList />} />
           <Route path="/add-thread-board" element={<AddThreadBoard />} />
-          <Route path="//tid/:tid/boardParent/:boardParent" element={<ThreadBoard />} />
 
+          {/* codeCategory(대분류 공통코드(부모)) */}
+          <Route path="/code-category" element={<CodeCategoryList />} />
+          <Route path="/add-code-category" element={<AddCodeCategory />} />
+
+          {/* code(소분류 공통코드(자식)) */}
+          <Route path="/code" element={<CodeList />} />
+          <Route path="/add-code" element={<AddCode />} />
+          <Route path="/code/:codeId" element={<Code />} />
+
+          {/* simple-product */}
+          <Route path="/simple-product" element={<SimpleProductList />} />
+          <Route path="/add-simple-product" element={<AddSimpleProduct />} />
+          <Route path="/simple-product/:spno" element={<SimpleProduct />} />
+          {/* 장바구니 상세 */}
+          <Route path="/simple-cart/:spno" element={<SimpleCart />} />
+          {/* 장바구니 전체 조회 */}
+          <Route path="/simple-cart" element={<SimpleCartList />} />
+
+          {/* product(연습) */}
+          <Route path="/product" element={<ProductList />} />
+          <Route path="/add-product" element={<AddProduct />} />
+          <Route path="/product/:pno" element={<Product />} />
 
           {/* NotFound */}
           <Route path="*" element={<NotFound />} />

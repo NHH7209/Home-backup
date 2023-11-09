@@ -7,7 +7,7 @@ import FaqService from "../../../services/normal/FaqService";
 import { Link } from "react-router-dom";
 
 function FaqList() {
-  // 변수 정의
+  // todo: 변수 정의
   // faq 배열 변수
   const [faq, setFaq] = useState<Array<IFaq>>([]);
   // 검색어 변수
@@ -121,7 +121,7 @@ function FaqList() {
           {faq &&
             faq.map((data, index) => (
               // 여기
-              <div className="accordion-item" key={index}>
+              <div className="accordion-item" key={data.no}>
                 {/* 사용법 : 변수명 유일 : 1) h2(제목) : id="heading0" */}
                 {/*                       div(본문) : aria-labelledby="heading0" */}
                 {/*                  2) h2(제목)  : data-bs-target="#collapse0" */}

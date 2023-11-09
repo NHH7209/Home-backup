@@ -9,8 +9,8 @@ const getAll = (title:string, page:number, size:number) => {
   };
   
   // 상세 조회
-  const get = (no:any) => {
-    return http.get<IFaq>(`/normal/faq/${no}`);
+  const get = (dno:any) => {
+    return http.get<IFaq>(`/normal/faq/${dno}`);
   };
   
   // 저장함수
@@ -18,12 +18,12 @@ const getAll = (title:string, page:number, size:number) => {
     return http.post<IFaq>("/normal/faq", data);
   };
   // 수정함수
-  const update = (no:any, data:IFaq) => {
-    return http.put<any>(`/normal/faq/${no}`, data);
+  const update = (dno:any, data:IFaq) => {
+    return http.put<any>(`/normal/faq/${dno}`, data);
   };
   // 삭제함수
-  const remove = (no:any) => {
-    return http.delete<any>(`/normal/faq/deletion/${no}`);
+  const remove = (dno:any) => {
+    return http.delete<any>(`/normal/faq/deletion/${dno}`);
   };
   
   const FaqService = {

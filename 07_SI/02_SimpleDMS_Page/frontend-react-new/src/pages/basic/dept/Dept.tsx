@@ -6,7 +6,7 @@ import DeptService from "../../../services/basic/DeptService";
 
 function Dept() {
 
-  // todo: 변수정의
+  // todo: 변수 정의
   // 전체조회 페이지에서 전송한 기본키(dno)
   const { dno } = useParams();
   // 강제페이지 이동 함수

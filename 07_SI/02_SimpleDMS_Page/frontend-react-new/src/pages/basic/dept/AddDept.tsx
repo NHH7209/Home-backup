@@ -5,7 +5,7 @@ import DeptService from "../../../services/basic/DeptService";
 
 function AddDept() {
 
-  // 객체 초기화
+  // todo: 객체 초기화
   const initialDept = {
     dno: null,
     dname: "",
@@ -17,7 +17,7 @@ function AddDept() {
   // 저장버튼 클릭후 submitted = true 변경됨
   const [submitted, setSubmitted] = useState<boolean>(false);
 
-  // input 태그에 수동 바인딩
+  // todo: input 태그에 수동 바인딩
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target; // 화면값
     setDept({ ...dept, [name]: value });  // 변수저장

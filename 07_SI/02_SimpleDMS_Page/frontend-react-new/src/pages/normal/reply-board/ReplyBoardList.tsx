@@ -88,6 +88,7 @@ function ReplyBoardList() {
   const saveReply = () => {
     // 임시 객체
     let data = {
+      // reply.boardTitle 부모제목, reply.boardContent (부모내용), reply.bid(부모번호)
       boardTitle: reply.boardTitle,
       boardContent: reply.boardContent,
       boardWriter: reply.boardWriter,
@@ -117,6 +118,7 @@ function ReplyBoardList() {
   //  게시물 reply 버튼 클릭시 화면에 답변입력창 보이게 하는 함수
   const newReply = (data: any) => {
     // 매개변수 데이터(객체) 수정 : boardContent: "" 수정
+    // data == 부모글 객체임, reply = 부모글객체 저장
     setReply({ ...data, boardContent: "" });
     // 답변 입력창 화면보이기 : replyClicked = true
     setReplyClicked(true);
