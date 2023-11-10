@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import TitleCom from "../../../components/common/TitleCom";
 import { useParams } from "react-router-dom";
-import ISimpleProduct from "./../../../types/shop/ISimpleProduct";
+import ISimpleProduct from './../../../types/shop/ISimpleProduct';
 import ICode from "../../../types/admin/code/ICode";
 import SimpleProductService from "../../../services/shop/SimpleProductService";
 import CodeService from "../../../services/admin/code/CodeService";
@@ -12,7 +12,7 @@ function SimpleProduct() {
   // 전체조회 페이지에서 전송한 기본키(spno)
   const { spno } = useParams();
   // 강제페이지 이동 함수
-  //   let navigate = useNavigate();
+//   let navigate = useNavigate();
 
   // todo: 객체 초기화
   const initialSimpleProduct = {
@@ -24,18 +24,17 @@ function SimpleProduct() {
     useYn: "Y",
   };
 
-  //   todo: code 배열 변수 : select 태그용
+//   todo: code 배열 변수 : select 태그용
   const [code, setCode] = useState<Array<ICode>>([]);
   // 수정될객체 : simpleProduct
-  const [simpleProduct, setSimpleProduct] =
-    useState<ISimpleProduct>(initialSimpleProduct);
+  const [simpleProduct, setSimpleProduct] = useState<ISimpleProduct>(initialSimpleProduct);
   // 화면에 수정 성공에 메세지 찍기 변수
   const [message, setMessage] = useState<string>("");
 
   // todo: 함수 정의
   // 상세조회 함수
   const getSimpleProduct = (spno: string) => {
-    SimpleProductService.get(spno) // 벡엔드로 상세조회 요청
+    SimpleProductService.get(spno)         // 벡엔드로 상세조회 요청
       .then((response: any) => {
         setSimpleProduct(response.data);
         console.log(response.data);

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 /**
  * packageName : com.example.simpledms.repository.normal
  * fileName : CinemaFaqRepository
@@ -22,6 +21,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CinemaFaqRepository extends JpaRepository<CinemaFaq, Integer> {
-    //    question like 검색 + 정렬(sortOrder desc)
+//    question like 검색 + 정렬(sortOrder desc)
     Page<CinemaFaq> findAllByQuestionContainingOrderBySortOrderDesc(String question, Pageable pageable);
 }

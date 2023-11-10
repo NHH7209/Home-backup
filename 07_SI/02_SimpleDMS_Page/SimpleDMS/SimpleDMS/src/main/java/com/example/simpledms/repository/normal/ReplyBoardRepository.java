@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Repository
 public interface ReplyBoardRepository extends JpaRepository<ReplyBoard, Integer> {
-    //    계층형 조회(특수) 쿼리 : @Query(, nativeQuery=true)
+//    계층형 조회(특수) 쿼리 : @Query(, nativeQuery=true)
     @Query(value = "SELECT BID           AS bid " +
             "     , LPAD('⤵', (LEVEL-1))|| board_title   AS BoardTitle " +
             "     , board_content AS boardContent " +
@@ -45,7 +45,7 @@ public interface ReplyBoardRepository extends JpaRepository<ReplyBoard, Integer>
             @Param("boardTitle") String boardTitle,
             Pageable pageable);
 
-    //  게시물 저장 함수 : 최초 생성 (board_group(그룹번호), board_parent(부모번호))
+//  게시물 저장 함수 : 최초 생성 (board_group(그룹번호), board_parent(부모번호))
 //    => board_group(부모번호 == 자식번호(bid)), board_parent(0(최초생성), 부모번호)
 //  todo: JPA insert 문 직접 작성 (dml: 테이블 데이터 변경, 트랜잭션을 동반)
 //    ==> @Transactional(트랜잭션을 동반), @Modifying(테이블 데이터 변경)
@@ -61,7 +61,7 @@ public interface ReplyBoardRepository extends JpaRepository<ReplyBoard, Integer>
             nativeQuery = true)
     int insertByBoard(@Param("replyBoard") ReplyBoard replyBoard);
 
-    //    게시물 + 답변글 2개 삭제 함수 : 소프트 삭제 (update 문 직접 작성)
+//    게시물 + 답변글 2개 삭제 함수 : 소프트 삭제 (update 문 직접 작성)
     @Transactional
     @Modifying
     @Query(value = "UPDATE TB_REPLY_BOARD " +

@@ -14,7 +14,7 @@ package com.example.simpledms.model.dto.normal;
  * 2023-10-26         GGG          최초 생성
  */
 public interface ReplyBoardDto {
-    //    속성 x => getter 함수
+//    속성 x => getter 함수
     public Integer getBid();
     public String getBoardTitle();
     public String getBoardContent();

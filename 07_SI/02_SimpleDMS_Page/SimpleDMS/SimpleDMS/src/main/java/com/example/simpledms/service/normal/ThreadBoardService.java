@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 /**
  * packageName : com.example.simpledms.service.normal
  * fileName : ThreadBoardService
@@ -54,35 +52,4 @@ public class ThreadBoardService {
 
         return insertCount;
     }
-
-    //    상세조회 함수
-    public Optional<ThreadBoard> findById(int tid) {
-        Optional<ThreadBoard> optionalThreadBoard
-                = threadBoardRepository.findById(tid);
-
-        return optionalThreadBoard;
-    }
-
-    //    답변만 삭제
-    public boolean removeById(int tid) {
-        if (threadBoardRepository.existsById(tid)) { // bid 있는지 확인
-            threadBoardRepository.deleteById(tid); // 삭제 진행
-            return true;
-        }
-        return false;
-    }
-
-    //    게시물 + 답변 2개이상 삭제 : 그룹번호로(boardGroup) 삭제
-    public boolean removeAllByTgroup(int tgroup) {
-
-//        deleteCount : 삭제된 건수
-        int deleteCount = threadBoardRepository.removeAllByTgroup(tgroup);
-
-        if(deleteCount > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }

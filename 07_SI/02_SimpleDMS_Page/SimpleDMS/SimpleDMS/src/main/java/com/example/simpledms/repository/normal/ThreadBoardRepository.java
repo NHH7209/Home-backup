@@ -57,13 +57,4 @@ public interface ThreadBoardRepository extends JpaRepository<ThreadBoard, Intege
             "            TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS'), NULL, NULL) ",
             nativeQuery = true)
     int insertByBoard(@Param("threadBoard") ThreadBoard threadBoard);
-
-    //    게시물 + 답변글 2개 삭제 함수 : 소프트 삭제 (update 문 직접 작성)
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE TB_THREAD_BOARD " +
-            "SET DELETE_YN = 'Y' " +
-            "  , DELETE_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') " +
-            "WHERE TGROUP = :tGroup", nativeQuery = true)
-    int removeAllByTgroup(@Param("boardGroup") int tGroup);
 }

@@ -83,7 +83,7 @@ public class FaqController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    
     //    수정 함수
     @PutMapping("/faq/{no}")
     public ResponseEntity<Object> update(
@@ -99,7 +99,6 @@ public class FaqController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     // 상세조회
     @GetMapping("/faq/{no}")

@@ -33,7 +33,7 @@ public class CinemaFaqService {
     public Page<CinemaFaq> findAllByQuestionContaining(String question, Pageable pageable) {
         Page<CinemaFaq> page
                 = cinemaFaqRepository
-                .findAllByQuestionContainingOrderBySortOrderDesc(question, pageable);
+                    .findAllByQuestionContainingOrderBySortOrderDesc(question, pageable);
 
         return page;
     }

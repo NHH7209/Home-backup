@@ -43,10 +43,10 @@ import javax.persistence.*;
 @SQLDelete(sql = "UPDATE TB_REPLY_BOARD SET DELETE_YN = 'Y', DELETE_TIME=TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE BID = ?")
 public class ReplyBoard extends BaseTimeEntity {
 
-    //    속성
+//    속성
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-            , generator = "SQ_REPLY_BOARD_GENERATOR")
+                    , generator = "SQ_REPLY_BOARD_GENERATOR")
     private Integer bid; // 기본키, 시퀀스
 
     private String boardTitle;

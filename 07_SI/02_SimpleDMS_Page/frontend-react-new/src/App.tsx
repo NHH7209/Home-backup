@@ -45,6 +45,10 @@ import SimpleProduct from "./pages/shop/simple-product/SimpleProduct";
 import Product from "./pages/shop/product/Product";
 import SimpleCart from "./pages/shop/simple-product/SimpleCart";
 import SimpleCartList from "./pages/shop/simple-product/SimpleCartList";
+import CinemaList from "./pages/shop/cinema/CinemaList";
+import Cinema from "./pages/shop/cinema/Cinema";
+import ThemaLoadList from "./pages/shop/thema-load/ThemaLoadList";
+import FileDbList from "./pages/advanced/FileDbList";
 
 function App() {
   return (
@@ -103,7 +107,6 @@ function App() {
           {/* 정리 : boardParent = 0 아니면 자식글을 클릭 */}
           <Route path="/reply-board/bid/:bid/boardParent/:boardParent" element={<ReplyBoard />} />
 
-
           {/* thread-board */}
           <Route path="/thread-board" element={<ThreadBoardList />} />
           <Route path="/add-thread-board" element={<AddThreadBoard />} />
@@ -130,6 +133,19 @@ function App() {
           <Route path="/product" element={<ProductList />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/product/:pno" element={<Product />} />
+
+          {/* cinema */}
+          {/* 박스오피스 순위 전체조회 */}
+          <Route path="/cinema" element={<CinemaList />} />
+          {/* 영화 상세조회 */}
+          <Route path="/cinema/:movieCd" element={<Cinema />} />
+
+          {/* 부산 테마길( busan thema load ) */}
+          <Route path="/thema-load" element={<ThemaLoadList />} />
+
+          {/* 파일 업로드 */}
+          <Route path="/fileDb" element={<FileDbList />} />
+
 
           {/* NotFound */}
           <Route path="*" element={<NotFound />} />

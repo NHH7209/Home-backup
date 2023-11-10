@@ -70,7 +70,7 @@ public class ReplyBoardService {
         return false;
     }
 
-    //    게시물 + 답변 2개이상 삭제 : 그룹번호로(boardGroup) 삭제
+//    게시물 + 답변 2개이상 삭제 : 그룹번호로(boardGroup) 삭제
     public boolean removeAllByBoardGroup(int boardGroup) {
 
 //        deleteCount : 삭제된 건수

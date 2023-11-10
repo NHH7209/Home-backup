@@ -1,4 +1,4 @@
-package com.example.simpledms.model.entity.normal;
+package com.example.simpledms.model.entity.shop;
 
 import com.example.simpledms.model.common.BaseTimeEntity;
 import lombok.*;
@@ -10,23 +10,23 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 /**
- * packageName : com.example.simpledms.model.entity.normal
- * fileName : ThreadBoard
+ * packageName : com.example.simpledms.model.entity.shop
+ * fileName : SimpleCart
  * author : GGG
- * date : 2023-10-27
+ * date : 2023-11-09
  * description :
  * 요약 :
  * <p>
  * ===========================================================
  * DATE            AUTHOR             NOTE
  * —————————————————————————————
- * 2023-10-27         GGG          최초 생성
+ * 2023-11-09         GGG          최초 생성
  */
 @Entity
-@Table(name="TB_THREAD_BOARD")
+@Table(name="TB_SIMPLE_CART")
 @SequenceGenerator(
-        name = "SQ_THREAD_BOARD_GENERATOR"
-        , sequenceName = "SQ_THREAD_BOARD"
+        name = "SQ_SIMPLE_CART_GENERATOR"
+        , sequenceName = "SQ_SIMPLE_CART"
         , initialValue = 1
         , allocationSize = 1
 )
@@ -40,26 +40,16 @@ import javax.persistence.*;
 @DynamicUpdate
 // soft delete
 @Where(clause = "DELETE_YN = 'N'")
-@SQLDelete(sql = "UPDATE TB_THREAD_BOARD SET DELETE_YN = 'Y', DELETE_TIME=TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE TID = ?")
-public class ThreadBoard extends BaseTimeEntity {
-//    속성
+@SQLDelete(sql = "UPDATE TB_SIMPLE_CART SET DELETE_YN = 'Y', DELETE_TIME=TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS') WHERE SCNO = ?")
+public class SimpleCart extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE
-            , generator = "SQ_THREAD_BOARD_GENERATOR")
-    private Integer tid; // 기본키, 시퀀스
+            , generator = "SQ_SIMPLE_CART_GENERATOR"
+    )
+    private Integer scno; // 기본키, 시퀀스, 장바구니 번호
 
-    private String subject;
+    private Integer spno; // 상품번호(참조키)
 
-    private String mainText;
-
-    private String writer;
-
-    private Integer views;
-
-    private Integer tgroup;
-
-    private Integer tparent;
-
-
+    private Integer cartCount = 0; // 장바구니 개수
 
 }

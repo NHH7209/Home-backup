@@ -19,6 +19,8 @@ const getAll = (title:string, page:number, size:number) => {
   };
   // 수정함수
   const update = (spno:any, data:ISimpleProduct) => {
+    console.log("spno", spno);
+    console.log("data", data);
     return http.put<any>(`/shop/simple-product/${spno}`, data);
   };
   // 삭제함수
